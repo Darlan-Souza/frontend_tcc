@@ -11,9 +11,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Gerenciar TCC</a>
-            </li>
+
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Gerenciar TCC</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/tcc/cadastro">Cadastrar</a>
+                    <a class="dropdown-item" href="#">Exibir Todos</a>
+                </div>
+            </div>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Cronogramas</a>
             </li>

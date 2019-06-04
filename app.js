@@ -8,7 +8,9 @@
     const path = require('path')
     const session = require('express-session')
     const flash = require('connect-flash')
+    //carregando rotas
     const usuarios = require("./routes/usuario")
+    const tcc = require("./routes/tcc")
 
 /*CONFIGURAÇÕES*/
     //Sessão
@@ -59,8 +61,10 @@
         res.send("Erro 404!")
     })
 
+    //defino a rota
     app.use('/admin', admin)
     app.use('/usuarios', usuarios)
+    app.use('/tcc', tcc)
 
 /*OUTROS*/
 const PORT = 8081
