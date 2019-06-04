@@ -11,6 +11,10 @@ router.get('/registro', function (req, res) {
     res.render("usuarios/registro")
 })
 
+router.get('/index', function (req, res) {
+    res.render("usuarios/index")
+})
+
 //as rotas tem o mesmo caminho mais o tipo delas é diferente uma é get e a outra é post
 router.post("/registro", function (req, res) {
     var erros = []
@@ -82,6 +86,10 @@ router.post("/registro", function (req, res) {
             res.redirect("/")
         })
     }
+})
+
+router.get("/login", function (req, res) {
+    res.render("usuarios/login")
 })
 
 router.get("/login", function (req, res) {
