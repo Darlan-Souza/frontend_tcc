@@ -1,3 +1,9 @@
+<style>
+    #datepicker {
+        width: 300px;
+    }
+</style>
+
 <h3>Cadastrar TCC</h3>
 <div class="card">
     <div class="card-body">
@@ -11,10 +17,10 @@
             <label for="assunto" class=" mt-3">Assunto:</label>
             <input type="text" class="form-control col-sm-12" placeholder="Assunto">
 
-            <label for="exampleFormControlTextarea1" class=" mt-3">Resumo</label>
+            <label for="exampleFormControlTextarea1" class=" mt-3">Resumo:</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 
-            <label for="exampleFormControlSelect1" class=" mt-3">Orientador</label>
+            <label for="exampleFormControlSelect1" class=" mt-3">Orientador:</label>
             <select class="form-control" id="exampleFormControlSelect1">
                 <option value="0">Orientador 1</option>
                 <option value="1">Orientador 2</option>
@@ -22,7 +28,17 @@
             </select>
 
             <label for="orientando" class=" mt-3">Orientando:</label>
-            <input type="text" class="form-control col-sm-12 mt-3" placeholder="Orientando">
+            <input type="text" class="form-control col-sm-12" placeholder="Orientando">
+
+            <label for="local" class=" mt-3">Local:</label>
+            <input type="text" class="form-control col-sm-12" placeholder="Local">
+
+            <label for="membros" class=" mt-3">Membros da banca:</label>
+            <input type="text" class="form-control col-sm-12" placeholder="Membros">
+            <br>
+            <button type="button" class="btn btn-primary btn-lg" style="background: rgba(46, 204, 113,1.0)">Salvar</button>
+            <button type="button" class="btn btn-secondary btn-lg" style="background:rgba(52, 152, 219,1.0)">Inserir Documento</button>
+            <button type="button" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button>
         </form>
     </div>
 </div>
