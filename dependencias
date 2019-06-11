@@ -12,7 +12,7 @@
     npm install --save connect-flash
 <<<<<<< HEAD
     npm install --save bcryptjs (para criar a senha resh)
-    npm install --g nedemon (conferir se é isso)
+    npm install -g nedemon (conferir se é isso)
     npm install --save passport (para verificar a senha na hora do acesso, depois olhar o site como usar o passport para autenticação com contas do google)
     npm install --save passport-local (por que quero autenticar do meu próprio banco local)
     instalar o git-scm.com
