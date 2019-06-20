@@ -11,7 +11,12 @@
     //carregando rotas
     const usuarios = require("./routes/usuario")
     const tcc = require("./routes/tcc")
+	const passport = require("passport")
+	require("./config/auth")(passport)
+	//carregando mongoose
+    const mongoose = require("mongoose")
 
+    
 /*CONFIGURAÇÕES*/
     //Sessão
         //app.use = serve para criação e configuração de midlewares
@@ -21,6 +26,9 @@
             resave: true,
             saveUninitialized: true
         }))
+		
+		app.use(passport.initialize())
+		app.use(passport.session())
         app.use(flash())
     
     //Midleware
@@ -28,6 +36,7 @@
             //crio variáveis globais
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
+			res.locals.error = req.flash("error")
             next()
         })
         
@@ -38,8 +47,12 @@
         app.engine('handlebars', handlebars({defaultLayout: 'main'}))  
         app.set('view engine', 'handlebars')
     //Mongoose
-
-
+        mongoose.Promise = global.Promise;
+        mongoose.connect("mongodb://localhost/tcc",{useNewUrlParser: true}).then(()=>{
+        console.log("Conectado ao MongoDB")
+        }).catch((err)=>{
+        console.log("Erro ao se conectar: "+err);
+        })  
     //Public 
         /*Falando para o express que a pasta public que contém os arquivos estáticos*/
         //__dirname paga o caminho absoluto para a pasta public 

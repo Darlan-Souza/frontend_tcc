@@ -13,26 +13,26 @@
         <h3 style="text-align: center; font-weight: 550; font-size: 2em;">Login</h3>
       </div>
       <div class="card-body">
-        <form>
+        <form action="/usuarios/login/aut", method="POST">
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Login">
+            <input type="text" class="form-control" name="email" placeholder="Login">
 
           </div>
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input type="password" class="form-control" placeholder="Senha">
+            <input type="password" class="form-control" name="senha" placeholder="Senha">
           </div>
           <br>
           <div class="row align-items-center remember">
             <input type="checkbox">Salvar
           </div>
           <div class="form-group">
-           <a href="/usuarios/index" class="btn float-right login_btn">Entrar</a>
+           <button type="submit" class="btn float-right login_btn" >Entrar</button>
           </div>
         </form>
       </div>

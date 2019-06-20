@@ -10,71 +10,38 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Nº</th>
+                    <th scope="col">Data</th>
                     <th scope="col">Aluno</th>
                     <th scope="col">Orientador</th>
                     <th scope="col">Tema</th>
                     <th scope="col">Detalhes</th>
                     <th scope="col">Download</th>
                     <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
+
+            
             <tbody>
+                {{#each trabalhos}}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
+                    <th scope="row">{{data}}</th>
+                    <td>{{orientando}}</td>
+                    <td>{{orientador}}</td>
+                    <td>{{tema}}</td>
                     <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
                     <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
+                    <td><a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success" type="submit">Editar</button></a></td>
+                    <form action="/tcc/cadastro/deletar" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <td><button class="btn btn-danger" type="submit">Excluir</button></a></td>
+                    </form>
+                    
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
-                    <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
-                    <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
-                    <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
-                    <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
-                    <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
-                    <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
-                    <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
-                    <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Nome</td>
-                    <td>Prof</td>
-                    <td>Tema</td>
-                    <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
-                    <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><i class="fas fa-pen" style="color: rgba(22, 160, 133,1.0);"></i></td>
-                </tr>
-            </tbody>
+                {{else}}
+                <h4>Nenhum trabalho cadastrado!</h4>
+                {{/each}}
+             </tbody>
         </table>
 
     </div>

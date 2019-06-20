@@ -1,36 +1,35 @@
 <h3>Cadastrar TCC</h3>
 <div class="card" style="margin-bottom: 10em;">
     <div class="card-body">
-        <form action="" method="POST">
+        <form action="/tcc/cadastro/novo" method="POST">
             <label for="titulo" class=" mt-3">Titulo:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Titulo">
+            <input type="text" class="form-control col-sm-12" placeholder="Titulo" name="titulo" required>
 
             <label for="tema" class=" mt-3">Tema:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Tema">
+            <input type="text" class="form-control col-sm-12" placeholder="Tema" name="tema" required> 
 
             <label for="assunto" class=" mt-3">Assunto:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Assunto">
+            <input type="text" class="form-control col-sm-12" placeholder="Assunto" name="assunto" required>
 
             <label for="exampleFormControlTextarea1" class=" mt-3">Resumo:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resumo" required></textarea>
 
-            <label for="exampleFormControlSelect1" class=" mt-3">Orientador:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option value="0">Orientador 1</option>
-                <option value="1">Orientador 2</option>
-                <option value="2">Orientador 3</option>
-            </select>
+            <label for="orientador" class=" mt-3">Orientador:</label>
+            <input type="text" class="form-control col-sm-12" placeholder="Orientador" name="orientador" required>
 
             <label for="orientando" class=" mt-3">Orientando:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Orientando">
+            <input type="text" class="form-control col-sm-12" placeholder="Orientando" name="orientando" required>
 
             <label for="local" class=" mt-3">Local:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Local">
+            <input type="text" class="form-control col-sm-12" placeholder="Local" name="local" required>
+
+            <label for="data" class=" mt-3">Data:</label>
+            <input type="date" class="form-control col-sm-12" placeholder="Data" name="data" required>
 
             <label for="membros" class=" mt-3">Membros da banca:</label>
-            <input type="text" class="form-control col-sm-12" placeholder="Membros">
+            <input type="text" class="form-control col-sm-12" placeholder="Membros" name="membros" required>
             <br>
-            <button type="button" class="btn btn-primary btn-lg" style="background: rgba(46, 204, 113,1.0)">Salvar</button>
+            <button type="submit" class="btn btn-primary btn-lg" style="background: rgba(46, 204, 113,1.0)">Salvar</button>
             <button type="button" class="btn btn-secondary btn-lg" style="background:rgba(52, 152, 219,1.0)">Inserir Documento</button>
             <button type="button" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button>
         </form>
