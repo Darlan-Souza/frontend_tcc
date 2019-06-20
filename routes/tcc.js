@@ -82,8 +82,6 @@ router.post('/cadastro/novo', (req, res)=>{
   })
 
 
-
-
 router.get('/index', function (req, res) {
     res.render("tcc/index")
 })
