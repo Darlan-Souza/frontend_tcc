@@ -11,8 +11,11 @@
     //carregando rotas
     const usuarios = require("./routes/usuario")
     const tcc = require("./routes/tcc")
-    //carregando mongoose
+	const passport = require("passport")
+	require("./config/auth")(passport)
+	//carregando mongoose
     const mongoose = require("mongoose")
+
     
 /*CONFIGURAÇÕES*/
     //Sessão
@@ -23,6 +26,9 @@
             resave: true,
             saveUninitialized: true
         }))
+		
+		app.use(passport.initialize())
+		app.use(passport.session())
         app.use(flash())
     
     //Midleware
@@ -30,6 +36,7 @@
             //crio variáveis globais
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
+			res.locals.error = req.flash("error")
             next()
         })
         

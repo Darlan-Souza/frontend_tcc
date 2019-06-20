@@ -81,6 +81,16 @@ router.post('/cadastro/novo', (req, res)=>{
 
   })
 
+  router.post("/cadastro/deletar", (req, res) => {
+    Trabalho.remove({_id: req.body.id}).then(() => {
+      req.flash("success_msg", "Trabalho deletado com sucesso!")
+      res.redirect("/tcc/exibir_todos")
+    }).catch((err) => {
+      req.flash("error_msg", "Houve um erro ao deletar o trabalho!")
+      res.redirect("/tcc/exibir_todos")
+    })
+  })
+
 
 router.get('/index', function (req, res) {
     res.render("tcc/index")

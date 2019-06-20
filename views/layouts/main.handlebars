@@ -15,7 +15,12 @@
     {{>_navbar}}
     <div class="container mt-4">
         <!--Msg de sucesso ou erro no registro de categoria (coloco dentro do container pra ficar mais bonito)-->
-        {{>_msg}}
+        {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{else}}
+
+        {{/if}}
+	    {{>_msg}}
         {{{body}}}
     </div>
     {{>_footer}}

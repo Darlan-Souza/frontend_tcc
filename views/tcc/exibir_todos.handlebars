@@ -17,6 +17,7 @@
                     <th scope="col">Detalhes</th>
                     <th scope="col">Download</th>
                     <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
 
@@ -31,6 +32,11 @@
                     <td><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></td>
                     <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
                     <td><a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success" type="submit">Editar</button></a></td>
+                    <form action="/tcc/cadastro/deletar" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <td><button class="btn btn-danger" type="submit">Excluir</button></a></td>
+                    </form>
+                    
                 </tr>
                 {{else}}
                 <h4>Nenhum trabalho cadastrado!</h4>
