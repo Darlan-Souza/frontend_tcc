@@ -29,6 +29,10 @@ router.get('/editar', function (req, res) {
     res.render("usuarios/editar")
 })
 
+router.get('/exibir_todos', function (req, res) {
+    res.render("usuarios/exibir_todos")
+})
+
 
 router.post('/registro/novo', (req, res) => {
     var erros = []
