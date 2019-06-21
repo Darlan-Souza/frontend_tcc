@@ -1,8 +1,86 @@
-<div class="jumbotron">
-    <h1 class="display-4">Bem vindo ao Sistema de TCC!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-        featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+<link rel="stylesheet" type="text/css" href="/css/style/styles.css">
+<style type="text/css" media="screen">
+  body{
+    transition: background 0.9s ease-in-out;
+    -webkit-transition: background 0.9s ease-in-out;
+  }
+</style>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="text-align: center; font-weight: 550; font-size: 2em;">Login</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Login">
+
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Senha">
+          </div>
+          <br>
+          <div class="form-group">
+           <a href="/usuarios/index" class="btn float-right login_btn">Entrar</a>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Não possui conta?<a href="/usuarios/registro">Cadastre-se</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  var imageCount = 0;
+  var currentImage = 0;
+  var backgrounds = [
+  "https://i.imgur.com/mBdct1D.jpg",
+  "https://wallpapercave.com/wp/UQrVgBv.jpg",
+  "http://sfwallpaper.com/images/full-hd-landscape-wallpaper-13.jpg",
+  "https://stmed.net/sites/default/files/landscape-wallpapers-27931-9332967.jpg",
+  "https://i.pinimg.com/originals/69/8e/0a/698e0a7a3fc8a49bc13a7f408e6fb8a0.jpg",
+  "https://images.wallpaperscraft.com/image/park_hungary_autumn_landscape_86238_1920x1080.jpg"
+  ];
+
+  var preLoadbackgrounds = new Array();
+  for (var i = 0; i < backgrounds.length; i++)
+  {
+    if (backgrounds[i] == "")
+      break;
+    preLoadbackgrounds[i] = new Image();
+    preLoadbackgrounds[i].src = backgrounds[i];
+    imageCount++;
+  }
+
+  function startSlideShow()
+  {
+    if (document.body && imageCount > 0)
+    {
+      document.body.style.backgroundImage = "url("+backgrounds[currentImage]+")";    
+      document.body.style.backgroundAttachment = "fixed";
+      document.body.style.backgroundRepeat = "repeat";
+      document.body.style.backgroundPosition = "left top";
+
+      currentImage = currentImage + 1;
+      if (currentImage > (imageCount-1))
+      { 
+        currentImage = 0;
+      }
+      setTimeout('startSlideShow()', 4000);
+    }
+  }
+  startSlideShow();
+
+</script>

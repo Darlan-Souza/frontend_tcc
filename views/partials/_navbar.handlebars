@@ -1,6 +1,11 @@
 <!--Arquivo que contém o menu da aplicação-->
+<style>
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="/">Sistema de TCC</a>
+    <a class="navbar-brand" href="/usuarios/index">Sistema de TCC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" ;>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/usuarios/index">Home <span class="sr-only">(current)</span></a>
             </li>
 
             <div class="dropdown">
@@ -17,14 +22,35 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/tcc/cadastro">Cadastrar</a>
                     <a class="dropdown-item" href="/tcc/exibir_todos">Exibir Todos</a>
+                    <a class="dropdown-item" href="/tcc/pesquisa_tcc">Pesquisar TCC</a>
                 </div>
             </div>
+            
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Gerenciar alunos</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/usuarios/registro_aluno">Cadastrar</a>
+                    <a class="dropdown-item" href="/usuarios/editar">Editar</a>
+                </div>
+            </div>
+
             <li class="nav-item active">
-                <a class="nav-link" href="#">Cronogramas</a>
+                <a class="nav-link" href="/tcc/cronograma">Cronogramas</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <a class="nav-link" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
+            <a class="nav-link" href="/"><i class="fas fa-user fa-2x"></i></a>
         </form>
     </div>
 </nav>
+
+<script>
+    $('body').on('mouseenter mouseleave', '.dropdown', function (e) {
+        var _d = $(e.target).closest('.dropdown');
+        if (e.type === 'mouseenter') _d.addClass('show');
+        setTimeout(function () {
+            _d.toggleClass('show', _d.is(':hover'));
+            $('[data-toggle="dropdown"]', _d).attr('aria-expanded', _d.is(':hover'));
+        }, 300);
+    });
+</script>
