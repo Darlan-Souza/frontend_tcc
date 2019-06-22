@@ -39,10 +39,14 @@
                 <a class="nav-link" href="/tcc/cronograma">Cronogramas</a>
             </li>
         </ul>
+        {{#if user}}
+        {{else}}
         <form class="form-inline my-2 my-lg-0">
             <a class="nav-link" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
+        {{/if}}
             <a class="nav-link" href="/usuarios/logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
         </form>
+
     </div>
 </nav>
 
