@@ -3,9 +3,11 @@ const router = express.Router()
 const mongoose = require("mongoose")
 require("../models/tcc")
 const Trabalho = mongoose.model("trabalhos")
+const {eAdmin} = require("../helpers/eAdmin")
+const {logado} = require("../helpers/logado")
 
 //Sessão de cadastro de trabalhos
-router.get('/exibir_todos', function(req, res){
+router.get('/exibir_todos', eAdmin, (req, res)=>{
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
   }).catch((err)=>{
@@ -14,11 +16,11 @@ router.get('/exibir_todos', function(req, res){
   })
 })
 
-router.get('/cadastro',(req,res)=>{
+router.get('/cadastro', eAdmin, (req,res)=>{
   res.render("tcc/cadastro")
 })
 
-router.post('/cadastro/novo', (req, res)=>{
+router.post('/cadastro/novo', eAdmin, (req, res)=>{
      
     const novoTrabalho = {
       titulo:req.body.titulo,
@@ -44,7 +46,7 @@ router.post('/cadastro/novo', (req, res)=>{
   })
 
   //Editar tcc
-  router.get("/cadastro/edit/:id",(req,res)=>{
+  router.get("/cadastro/edit/:id", eAdmin, (req,res)=>{
     Trabalho.findOne({_id:req.params.id}).then((trabalho)=>{
       res.render("tcc/editar",{trabalho: trabalho})
       }).catch((err)=>{
@@ -53,7 +55,7 @@ router.post('/cadastro/novo', (req, res)=>{
       })
   })
 
-  router.post("/cadastro/edit",(req,res)=>{
+  router.post("/cadastro/edit", eAdmin, (req,res)=>{
     Trabalho.findOne({_id: req.body.id}).then((trabalho)=>{
       
       trabalho.titulo = req.body.titulo,
@@ -92,7 +94,7 @@ router.post('/cadastro/novo', (req, res)=>{
   })
 
 
-router.get('/index', function (req, res) {
+router.get('/index',logado, function (req, res) {
     res.render("tcc/index")
 })
 

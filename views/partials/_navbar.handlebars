@@ -16,15 +16,18 @@
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Gerenciar TCC</button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/tcc/cadastro">Cadastrar</a>
-                    <a class="dropdown-item" href="/tcc/exibir_todos">Exibir Todos</a>
+                    <a class="dropdown-item" href="/tcc/exibir_todos">Exibir TCCs</a>
                 </div>
             </div>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Cronogramas</a>
             </li>
         </ul>
+        {{#if user}}
+        {{else}}
         <form class="form-inline my-2 my-lg-0">
             <a class="nav-link" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
         </form>
+        {{/if}}
     </div>
 </nav>

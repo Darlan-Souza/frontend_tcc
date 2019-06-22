@@ -90,7 +90,7 @@ router.get("/login", function (req, res) {
 
 router.post("/login/aut", (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/usuarios/index",
+        successRedirect: "/tcc/index",
         failureRedirect: "/usuarios/login",
         failureFlash: true
     })(req, res, next)
@@ -99,7 +99,7 @@ router.post("/login/aut", (req, res, next) => {
 //usuario fazer logout do sistema 
 router.get("/logout", function(req, res){
     req.logout()
-    req.flash("success_msg", "Deslogado com sucesso")
+    req.flash("success_msg", "Deslogado com sucesso!")
     res.redirect("/")
 })
 
