@@ -90,7 +90,7 @@ router.get("/login", function (req, res) {
 
 router.post("/login/aut", (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/tcc/index",
+        successRedirect: "/tcc/exibir_todos",
         failureRedirect: "/usuarios/login",
         failureFlash: true
     })(req, res, next)

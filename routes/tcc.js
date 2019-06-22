@@ -16,6 +16,54 @@ router.get('/exibir_todos', logado, (req, res)=>{
   })
 })
 
+//pesquisa com filtro
+
+router.get('/index',  (req,res)=>{
+  res.render("tcc/index")
+})
+
+router.post('/index/p', (req, res)=>{
+  if(req.body.filtro == "Tema"){
+var pesquisa = req.body.pesquisa;
+Trabalho.find({tema: new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+  res.render("tcc/index", {trabalhos:trabalhos})
+}).catch((err)=>{
+  req.flash("error_msg", "TCC não encontrado")
+  res.redirect("/tcc")
+})
+}
+if(req.body.filtro == "Orientador"){
+  var pesquisa = req.body.pesquisa;
+  Trabalho.find({orientador: new RegExp( pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+    res.render("tcc/index", {trabalhos:trabalhos})
+  }).catch((err)=>{
+    req.flash("error_msg", "TCC não encontrado")
+    res.redirect("/tcc")
+  })
+  }
+  if(req.body.filtro == "Aluno"){
+    var pesquisa = req.body.pesquisa;
+    Trabalho.find({orientando:  new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+      res.render("tcc/index", {trabalhos:trabalhos})
+    }).catch((err)=>{
+      req.flash("error_msg", "TCC não encontrado")
+      res.redirect("/tcc")
+    })
+    }
+  
+    if(req.body.filtro == "Titulo"){
+      var pesquisa = req.body.pesquisa;
+      Trabalho.find({titulo:  new RegExp(pesquisa,'i')}).sort({date:'desc'}).then((trabalhos)=>{
+        res.render("tcc/index", {trabalhos:trabalhos})
+      }).catch((err)=>{
+        req.flash("error_msg", "TCC não encontrado")
+        res.redirect("/tcc")
+      })
+      }
+
+})
+
+
 //cadastro de trabalhos
 router.get('/cadastro', eAdmin, (req,res)=>{
   res.render("tcc/cadastro")
@@ -95,10 +143,7 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
     })
   })
 
-//pesquisa de tcc
-router.get('/index',logado, function (req, res) {
-    res.render("tcc/index")
-})
+
 
 //Sempre fica por ultimo
 module.exports = router 
