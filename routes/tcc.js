@@ -6,8 +6,8 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
-//Sessão de cadastro de trabalhos
-router.get('/exibir_todos', eAdmin, (req, res)=>{
+//exibe todos os tccs
+router.get('/exibir_todos', logado, (req, res)=>{
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
   }).catch((err)=>{
@@ -16,6 +16,7 @@ router.get('/exibir_todos', eAdmin, (req, res)=>{
   })
 })
 
+//cadastro de trabalhos
 router.get('/cadastro', eAdmin, (req,res)=>{
   res.render("tcc/cadastro")
 })
@@ -83,7 +84,8 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
 
   })
 
-  router.post("/cadastro/deletar", (req, res) => {
+  //deleta tcc
+  router.post("/cadastro/deletar", eAdmin, (req, res) => {
     Trabalho.remove({_id: req.body.id}).then(() => {
       req.flash("success_msg", "Trabalho deletado com sucesso!")
       res.redirect("/tcc/exibir_todos")
@@ -93,7 +95,7 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
     })
   })
 
-
+//pesquisa de tcc
 router.get('/index',logado, function (req, res) {
     res.render("tcc/index")
 })
