@@ -136,6 +136,17 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
     })
 
   })
+  
+
+  //exibir detalhes
+   router.get("/cadastro/exibe/:id", logado, (req,res)=>{
+    Trabalho.findOne({_id:req.params.id}).then((trabalho)=>{
+      res.render("tcc/detalhe",{trabalho: trabalho})
+      }).catch((err)=>{
+        req.flash("error_msg","Este trabalho não existe!")
+        res.redirect("/tcc/exibir_todos")
+      })
+  })
 
   //deleta tcc
   router.post("/cadastro/deletar", eAdmin, (req, res) => {
