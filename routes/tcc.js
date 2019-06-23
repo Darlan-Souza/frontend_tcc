@@ -6,6 +6,11 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
+
+router.get('/documentacao',  (req,res)=>{
+  res.render("tcc/documentacao")
+})
+
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
