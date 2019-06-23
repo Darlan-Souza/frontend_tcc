@@ -7,7 +7,7 @@ const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
 //exibe todos os tccs
-router.get('/exibir_todos', logado, (req, res)=>{
+router.get('/exibir_todos',  (req, res)=>{
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
   }).catch((err)=>{
@@ -81,8 +81,9 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
       tema:req.body.tema,
       assunto:req.body.assunto,
       resumo:req.body.resumo,
-      orientador:req.body.orientador,
       orientando:req.body.orientando,
+      orientador:req.body.orientador,
+      horario:req.body.horario,
       local:req.body.local,
       membros:req.body.membros,
       data:req.body.data
@@ -136,10 +137,10 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
     })
 
   })
-  
+ 
 
   //exibir detalhes
-   router.get("/cadastro/exibe/:id", logado, (req,res)=>{
+   router.get("/cadastro/exibe/:id",  (req,res)=>{
     Trabalho.findOne({_id:req.params.id}).then((trabalho)=>{
       res.render("tcc/detalhe",{trabalho: trabalho})
       }).catch((err)=>{
