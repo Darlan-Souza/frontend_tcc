@@ -6,6 +6,11 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
+//download
+router.get("/doc", function(req, res){
+  res.sendfile(__dirname+"/html/docentes.pdf")
+})
+
 //exibe os documentos
 router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
