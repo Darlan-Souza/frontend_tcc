@@ -35,10 +35,9 @@
           <th scope="col">Tema</th>
           <th scope="col">Detalhes</th>
           <th scope="col">Download</th>
-          {{#if user}}
+
           <th scope="col">Ação</th>
-          {{else}}
-          {{/if}}
+
         </tr>
       </thead>
 
@@ -55,17 +54,15 @@
           <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
 
           <td>
-            {{#if user}}
+
             <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success pl-3 mb-1" type="submit"><i
                   class="fas fa-pencil-alt"></i></button></a>
-            {{else}}
-            {{/if}}
+
             <form action="/tcc/cadastro/deletar" method="POST">
               <input type="hidden" name="id" value="{{_id}}">
-              {{#if user}}
+
               <button class="btn btn-danger px-3 py-1" type="submit"><i class="fa fa-trash"></i></button></a>
-              {{else}}
-              {{/if}}
+
             </form>
           </td>
         </tr>
