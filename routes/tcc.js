@@ -6,6 +6,12 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
+//exemplo download
+router.get("/baixar", function(req, res){
+  //Amanda, voce pode colocar na pasta Public os pdfs, basta passar o endereço da pasta logo abaixo
+  res.sendfile("views/tcc/docs/testearq.pdf")
+})
+
 //exibe os documentos
 router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
