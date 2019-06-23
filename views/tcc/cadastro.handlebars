@@ -21,12 +21,12 @@
             <input type="text" class="form-control col-sm-12" placeholder="Orientador" name="orientador" required>
             
             <label for="horario" class=" mt-3">Horário:</label>
-            <input type="time" class="form-control col-sm-12" name="horario" readonly>
+            <input type="time" class="form-control col-sm-12" name="horario" required>
 
             <label for="local" class=" mt-3">Local:</label>
             <input type="text" class="form-control col-sm-12" placeholder="Local" name="local" required>
 
-            <label for="data" class=" mt-3">Data:</label>
+            <label for="data" class=" mt-3">Data da defesa:</label>
             <input type="date" class="form-control col-sm-12" placeholder="Data" name="data" required>
 
             <label for="membros" class=" mt-3">Membros da banca:</label>
@@ -34,7 +34,7 @@
             <br>
             <button type="submit" class="btn btn-primary btn-lg" style="background: rgba(46, 204, 113,1.0)">Salvar</button>
             <button type="submit" class="btn btn-secondary btn-lg" style="background:rgba(52, 152, 219,1.0)">Inserir Documento</button>
-            <button type="button" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button>
+            <a href="/"><button type="button" id="cancel" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button></a>
         </form>
     </div>
 </div>
