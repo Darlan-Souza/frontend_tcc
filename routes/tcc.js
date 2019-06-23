@@ -7,6 +7,7 @@ const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
 
+//exibe os documentos
 router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
 })
