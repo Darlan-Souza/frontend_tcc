@@ -1,0 +1,41 @@
+<h3>Detalhe do TCC</h3>
+<div class="card" style="margin-bottom: 10em;">
+    <div class="card-body">
+        <form action="/tcc/cadastro/exibe" method="POST">
+            <input type="hidden" name="id" value="{{trabalho._id}}">
+
+            <label for="titulo" class=" mt-3">Titulo:</label>
+            <input type="text" class="form-control col-12" name="titulo" value="{{trabalho.titulo}}" readonly>
+
+            <label for="tema" class=" mt-3">Tema:</label>
+            <input type="text" class="form-control col-sm-12" name="tema" value="{{trabalho.tema}}" readonly>
+
+            <label for="assunto" class=" mt-3">Assunto:</label>
+            <input type="text" class="form-control col-sm-12" name="assunto" value="{{trabalho.assunto}}" readonly>
+
+             <label for="exampleFormControlTextarea1" class=" mt-3">Resumo:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resumo" required readonly>{{trabalho.resumo}} </textarea>
+
+            <label for="aluno" class=" mt-3">Aluno:</label>
+            <input type="text" class="form-control col-sm-12" name="orientador" value="{{trabalho.orientador}}" readonly>
+
+            <label for="orientador" class=" mt-3">Orientador:</label>
+            <input type="text" class="form-control col-sm-12" name="orientando" value="{{trabalho.orientando}}" readonly>
+
+            <label for="horario" class=" mt-3">Horário:</label>
+            <input type="time" class="form-control col-sm-12" name="horario" value="{{trabalho.horario}}" readonly>
+
+            <label for="local" class=" mt-3">Local:</label>
+            <input type="text" class="form-control col-sm-12" name="local" value="{{trabalho.local}}" readonly>
+
+            <label for="data" class=" mt-3">Data da defesa:</label>
+            <input type="text" class="form-control col-sm-12" name="data" value="{{trabalho.data}}" readonly>
+
+            <label for="membros" class=" mt-3">Membros da banca:</label>
+            <input type="text" class="form-control col-sm-12" name="membros" value="{{trabalho.membros}}" readonly>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg"
+                style="background: rgba(46, 204, 113,1.0)">Download</button>
+        </form>
+    </div>
+</div>

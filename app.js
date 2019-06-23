@@ -32,11 +32,12 @@
         app.use(flash())
     
     //Midleware
-        app.use(function(req, res, next){
+        app.use((req, res, next)=>{
             //crio variáveis globais
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
 			res.locals.error = req.flash("error")
+            res.locals.user = req.user || null;
             next()
         })
         
@@ -81,6 +82,6 @@
 
 /*OUTROS*/
 const PORT = 8081
-app.listen(PORT, () => {
-    console.log("Servidor rodando na porta 8081!")
+app.listen(PORT, function() {
+    console.log("Servidor rodando na porta "+ PORT)
 })
