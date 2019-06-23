@@ -16,6 +16,11 @@ router.get('/exibir_todos', logado, (req, res)=>{
   })
 })
 
+//detalhes do tcc
+router.get('/index/detalhe',  (req,res)=>{
+  res.render("tcc/detalhe")
+})
+
 //pesquisa com filtro
 
 router.get('/index',  (req,res)=>{
