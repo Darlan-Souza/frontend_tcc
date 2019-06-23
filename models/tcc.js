@@ -35,7 +35,7 @@ const Tcc = new Schema({
 
     horario:{
         type: String,
-        required: true
+        required: false
     },
 
     local:{

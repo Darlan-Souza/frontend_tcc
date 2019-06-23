@@ -35,8 +35,7 @@
                     <th scope="col">Tema</th>
                     <th scope="col">Detalhes</th>
                     <th scope="col">Download</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
+                    <th scope="col">Ação</th>
                 </tr>
             </thead>
 
@@ -50,11 +49,12 @@
                     <td>{{tema}}</td>
                     <td><a href="detalhe"><i class="fas fa-question-circle" style="color: rgba(41, 128, 185,1.0);"></i></a></td>
                     <td><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></td>
-                    <td><a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success" type="submit">Editar</button></a></td>
+                    <td><a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success pl-3 mb-1" type="submit"><i class="fas fa-pencil-alt"></i></button></a>
                     <form action="/tcc/cadastro/deletar" method="POST">
                         <input type="hidden" name="id" value="{{_id}}">
-                        <td><button class="btn btn-danger" type="submit">Excluir</button></a></td>
+                        <button class="btn btn-danger px-3 py-1" type="submit"><i class="fa fa-trash"></i></button></a>
                     </form>
+                    </td>
                     
                 </tr>
                 {{else}}

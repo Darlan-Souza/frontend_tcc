@@ -6,9 +6,14 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
-
+//Documentação
 router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
+})
+
+//Cronograma
+router.get('/cronograma',  (req,res)=>{
+  res.render("tcc/cronograma")
 })
 
 //exibe todos os tccs
