@@ -68,7 +68,6 @@ router.get('/registro',(req,res)=>{
                           })
                       })
                   })
-
             }
         }).catch((err) => {
             req.flash("error_msg", "Houve um erro interno")
@@ -103,6 +102,7 @@ router.get("/logout", function(req, res){
     res.redirect("/")
 })
 
+/*
 //Editar usuário
 router.get("/registro/edit/:id", eAdmin, (req,res)=>{
     Usuario.findOne({_id:req.params.id}).then((usuario)=>{
@@ -144,7 +144,7 @@ router.get("/registro/edit/:id", eAdmin, (req,res)=>{
       req.flash("error_msg", "Houve um erro ao deletar o usuário!")
       res.redirect("/usuarios/exibir_todos")
     })
-  })
+  })*/
 
 //Sempre fica por ultimo
 module.exports = router 
