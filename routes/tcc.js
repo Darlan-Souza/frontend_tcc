@@ -6,9 +6,19 @@ const Trabalho = mongoose.model("trabalhos")
 const {eAdmin} = require("../helpers/eAdmin")
 const {logado} = require("../helpers/logado")
 
-//download
-router.get("/doc", function(req, res){
-  res.sendfile(__dirname+"/html/docentes.pdf")
+//download docentes
+router.get("/docentes", function(req, res){
+  res.sendfile("views/tcc/docs/docentes.pdf")
+})
+
+//download resolução consep
+router.get("/doc1", function(req, res){
+  res.sendfile("views/tcc/docs/normas_redação_TCC.pdf")
+})
+
+//download normas de redação
+router.get("/doc2", function(req, res){
+  res.sendfile("views/tcc/docs/resolução_22.pdf")
 })
 
 //exibe os documentos
