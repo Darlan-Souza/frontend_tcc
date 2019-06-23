@@ -11,15 +11,20 @@ router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
 })
 
-//Cronograma
-router.get('/cronograma',  (req,res)=>{
-  res.render("tcc/cronograma")
-})
-
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
+  }).catch((err)=>{
+    req.flash("error_msg","Houve um erro ao listar as categorias")
+    res.redirect("/tcc")
+  })
+})
+
+//cronograma
+router.get('/cronograma',  (req, res)=>{
+  Trabalho.find().sort({date:'asc'}).then((trabalhos)=>{
+    res.render("tcc/cronograma",{trabalhos: trabalhos})
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
     res.redirect("/tcc")
@@ -32,7 +37,6 @@ router.get('/index/detalhe',  (req,res)=>{
 })
 
 //pesquisa com filtro
-
 router.get('/index',  (req,res)=>{
   res.render("tcc/index")
 })
