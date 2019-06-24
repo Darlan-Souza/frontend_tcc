@@ -5,7 +5,7 @@
     const app = express()
     const admin = require("./routes/admin")
     //o módulo path serve para manipulação de pastas
-    const path = require('path')
+    const path = require("path")
     const session = require('express-session')
     const flash = require('connect-flash')
     //carregando rotas

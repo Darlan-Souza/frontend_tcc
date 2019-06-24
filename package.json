@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -20,8 +20,12 @@
     "express-middleware": "^3.4.1",
     "express-middlewares": "^0.1.1",
     "express-session": "^1.16.2",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
     "mongoose": "^5.6.0",
     "mongoose-paginate": "^5.0.3",
+    "multer": "^1.4.1",
+    "multer-gridfs-storage": "^3.2.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "require-dir": "^1.2.0"

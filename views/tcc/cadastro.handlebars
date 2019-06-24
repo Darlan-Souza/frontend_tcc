@@ -1,7 +1,7 @@
 <h3>Cadastrar TCC</h3>
 <div class="card" style="margin-bottom: 10em;">
     <div class="card-body">
-        <form action="/tcc/cadastro/novo" method="POST">
+        <form action="/tcc/cadastro/novo" method="POST" enctype="multipart/form-data"> 
             <label for="titulo" class=" mt-3">Titulo:</label>
             <input type="text" class="form-control col-sm-12" placeholder="Titulo" name="titulo" required>
 
@@ -29,9 +29,27 @@
             <label for="membros" class=" mt-3">Membros da banca:</label>
             <input type="text" class="form-control col-sm-12" placeholder="Membros" name="membros" required>
             <br>
+
+            <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <div class="custom-file mb-3">
+                    <input type="file" name="file" id="file" class="custom-file-input">
+                    <label for="file" class="custom-file-label">Choose File</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
             <button type="submit" class="btn btn-primary btn-lg" style="background: rgba(46, 204, 113,1.0)">Salvar</button>
+<<<<<<< Updated upstream
             <button type="button" class="btn btn-secondary btn-lg" style="background:rgba(52, 152, 219,1.0)">Inserir Documento</button>
             <button type="button" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button>
+=======
+            <!--<button type="submit" class="btn btn-secondary btn-lg" style="background:rgba(52, 152, 219,1.0)">Inserir Documento</button>-->
+            <a href="/"><button type="button" id="cancel" class="btn btn-secondary btn-lg" style="background: rgba(231, 76, 60,1.0)">Cancelar</button></a>
+>>>>>>> Stashed changes
         </form>
     </div>
 </div>
