@@ -1,7 +1,12 @@
 <footer class="page-footer font-small"
   style="background-color: #e3f2fd; position: fixed; bottom:0; left:0; width: 100%;">
 
-  <div class="footer-copyright text-center py-3">© Sistema de TCC 2019
-    <p>Desenvolvido pelos alunos da disciplina de Engenharia de Software II</p>
+  <div class="footer-copyright text-center py-3">
+    <p id="footer">© Sistema de TCC 2019<br>Desenvolvido pelos alunos da disciplina de Engenharia de Software II</p>
   </div>
+  <script>
+    var now = new Date
+    ano = now.getFullYear()
+    document.getElementById('footer').innerHTML = "© Sistema de TCC " + ano + " <br>Desenvolvido pelos alunos da disciplina de Engenharia de Software II"
+  </script>
 </footer>
