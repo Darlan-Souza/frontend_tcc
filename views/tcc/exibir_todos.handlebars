@@ -21,10 +21,10 @@
             </thead>
 
 
-            <tbody>
+            <tbody align="center">
                 {{#each trabalhos}}
                 <tr>
-                    <th scope="row">{{data}}</th>
+                    <th scope="row">{{titulo}}</th>
                     <td>{{orientando}}</td>
                     <td>{{orientador}}</td>
                     <td>{{tema}}</td>
@@ -35,11 +35,11 @@
 
                         <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success px-2 py-1" type="submit">
                             <i class="fas fa-pencil-alt"></i></button></a>
-
+                        
                         <form action="/tcc/cadastro/deletar" method="POST">
                             <input type="hidden" name="id" value="{{_id}}">
                             <button class="btn btn-danger px-2 py-1" type="submit">
-                                <i class="fa fa-trash"></i></button></a>
+                                <i class="fa fa-trash"></i></button>
                         </form>
                     </td>
 
