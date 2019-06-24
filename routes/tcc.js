@@ -293,7 +293,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
   //deleta tcc
   router.post("/cadastro/deletar", eAdmin, (req, res) => {
     Trabalho.remove({_id: req.body.id}).then(() => {
-      gfs.remove({filename: req.params.documento})
+      gfs.remove({filename: req.body.documento, root: "upload"})
       req.flash("success_msg", "Trabalho deletado com sucesso!")
       res.redirect("/tcc/exibir_todos")
     }).catch((err) => {
