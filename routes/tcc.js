@@ -9,8 +9,6 @@ const {logado} = require("../helpers/logado")
 
 
 //Sessão de cadastro de trabalhos
-router.get('/exibir_todos', function(req, res){
-
 const path = require("path")
 const crypto = require("crypto")
 const multer  = require("multer")
@@ -77,10 +75,7 @@ router.get('/documentacao',  (req,res)=>{
 
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
-
-
-
-  Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
+  Trabalho.find().populate("upload.files").sort({sort:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
@@ -92,8 +87,6 @@ router.get('/exibir_todos',  (req, res)=>{
 router.get('/cadastro',(req,res)=>{
   res.render("tcc/cadastro")
 })
-
-router.post('/cadastro/novo', (req, res)=>{
 
 //detalhes do tcc
 router.get('/index/detalhe',  (req,res)=>{
@@ -152,8 +145,6 @@ if(req.body.filtro == "Orientador"){
 router.get('/cadastro', eAdmin,(req,res)=>{
   res.render("tcc/cadastro")
 })
-
-router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
 
 
 //cronograma
@@ -223,7 +214,7 @@ router.get('/cadastro', eAdmin, (req,res)=>{
   res.render("tcc/cadastro")
 })
 
-router.post('/cadastro/novo', eAdmin, (req, res)=>{
+router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
 
      
     const novoTrabalho = {
@@ -310,7 +301,7 @@ router.post('/cadastro/novo', eAdmin, (req, res)=>{
     })
   })
 
-HEAD
+
 
 router.get('/index', function (req, res) {
     res.render("tcc/index")
@@ -318,23 +309,15 @@ router.get('/index', function (req, res) {
 
 
   //Exibe arquivo
-  router.get("/cadastro/exibeDoc/:_id",(req,res)=>{
-    gfs.file.findOne({id : req.params._id},(file)=>{
-      //Check if files
-      if(!file || file.length == 0){
-        res.flash("error_msg","Não existe arquivo cadastrado")
-      }
-      //Check if image
-      if(file.contentType == 'application/pdf'){
-        // Read output to browser
-        const readstream = gfs.createReadStream(file._id);
-        readstream.pipe(res);
-      }else{
-        res.flash("error_msg","Não existe pdf cadastrado")
-      }
+  router.get("/cadastro/exibeDoc/:filename",(req,res)=>{
+    gfs.files.findOne({filename : req.params.filename}).then((documento)=>{
+      const readstream = gfs.createReadStream(documento.filename);
+      readstream.pipe(res);
+    }).catch((err)=>{
+      req.flash("error_msg","Falha ao localizar o arquivo")
     })
   })
-})})})
+
 
 //Sempre fica por ultimo
 module.exports = router
