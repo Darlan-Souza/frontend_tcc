@@ -10,7 +10,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr align="center">
-                    <th scope="col">Data da defesa</th>
+                    <th scope="col">Título</th>
                     <th scope="col">Aluno</th>
                     <th scope="col">Orientador</th>
                     <th scope="col">Tema</th>
@@ -26,14 +26,14 @@
             <tbody>
                 {{#each trabalhos}}
                 <tr>
-                    <th scope="row">{{data}}</th>
+                    <th scope="row">{{titulo}}</th>
                     <td>{{orientando}}</td>
                     <td>{{orientador}}</td>
                     <td>{{tema}}</td>
                     <td align="center"><a href="/tcc/cadastro/exibe/{{_id}}"><i class="fas fa-question-circle"
                                 style="color: rgba(41, 128, 185,1.0);"></i></a></td>
                                 
-                    <td><a href="/tcc/cadastro/exibeDoc/{{upload.files.filename}}"><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></a></td>
+                    <td align="center"><a href="/tcc/cadastro/exibeDoc/{{_id}}"><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></a></td>
                     <td>
                         <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success pl-3 mb-1" type="submit"><i
                                     class="fas fa-pencil-alt"></i></button></a>

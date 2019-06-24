@@ -75,10 +75,10 @@ router.get('/documentacao',  (req,res)=>{
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
   Trabalho.find().sort({data:'asc'}).then((trabalhos)=>{
-    res.render("tcc/exibir_todos",{trabalhos: trabalhos})
+      res.render("tcc/exibir_todos",{trabalhos: trabalhos}) 
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
-    res.redirect("/tcc"+err)
+    res.redirect("/")
   })
 })
 
@@ -105,7 +105,7 @@ Trabalho.find({tema: new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((traba
   res.render("tcc/index", {trabalhos:trabalhos})
 }).catch((err)=>{
   req.flash("error_msg", "TCC não encontrado")
-  res.redirect("/tcc")
+  res.redirect("/")
 })
 }
 if(req.body.filtro == "Orientador"){
@@ -114,7 +114,7 @@ if(req.body.filtro == "Orientador"){
     res.render("tcc/index", {trabalhos:trabalhos})
   }).catch((err)=>{
     req.flash("error_msg", "TCC não encontrado")
-    res.redirect("/tcc")
+    res.redirect("/")
   })
   }
   if(req.body.filtro == "Aluno"){
@@ -123,7 +123,7 @@ if(req.body.filtro == "Orientador"){
       res.render("tcc/index", {trabalhos:trabalhos})
     }).catch((err)=>{
       req.flash("error_msg", "TCC não encontrado")
-      res.redirect("/tcc")
+      res.redirect("/")
     })
     }
   
@@ -133,7 +133,7 @@ if(req.body.filtro == "Orientador"){
         res.render("tcc/index", {trabalhos:trabalhos})
       }).catch((err)=>{
         req.flash("error_msg", "TCC não encontrado")
-        res.redirect("/tcc")
+        res.redirect("/")
       })
       }
 
@@ -152,7 +152,7 @@ router.get('/cronograma',  (req, res)=>{
     res.render("tcc/cronograma",{trabalhos: trabalhos})
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
-    res.redirect("/tcc")
+    res.redirect("/")
   })
 })
 
@@ -173,7 +173,7 @@ Trabalho.find({tema: new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((traba
   res.render("tcc/index", {trabalhos:trabalhos})
 }).catch((err)=>{
   req.flash("error_msg", "TCC não encontrado")
-  res.redirect("/tcc")
+  res.redirect("/")
 })
 }
 if(req.body.filtro == "Orientador"){
@@ -182,7 +182,7 @@ if(req.body.filtro == "Orientador"){
     res.render("tcc/index", {trabalhos:trabalhos})
   }).catch((err)=>{
     req.flash("error_msg", "TCC não encontrado")
-    res.redirect("/tcc")
+    res.redirect("/")
   })
   }
   if(req.body.filtro == "Aluno"){
@@ -191,7 +191,7 @@ if(req.body.filtro == "Orientador"){
       res.render("tcc/index", {trabalhos:trabalhos})
     }).catch((err)=>{
       req.flash("error_msg", "TCC não encontrado")
-      res.redirect("/tcc")
+      res.redirect("/")
     })
     }
   
@@ -201,7 +201,7 @@ if(req.body.filtro == "Orientador"){
         res.render("tcc/index", {trabalhos:trabalhos})
       }).catch((err)=>{
         req.flash("error_msg", "TCC não encontrado")
-        res.redirect("/tcc")
+        res.redirect("/")
       })
       }
 
@@ -226,7 +226,8 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
       horario:req.body.horario,
       local:req.body.local,
       membros:req.body.membros,
-      data:req.body.data
+      data:req.body.data,
+      documento:req.file.filename
     }
   
     new Trabalho(novoTrabalho).save().then(()=>{
@@ -316,7 +317,6 @@ router.get('/index', function (req, res) {
       req.flash("error_msg","Falha ao localizar o arquivo")
     })
   })
-
 
 //Sempre fica por ultimo
 module.exports = router

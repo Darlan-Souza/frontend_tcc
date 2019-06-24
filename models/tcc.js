@@ -52,6 +52,11 @@ const Tcc = new Schema({
     membros:{
         type: String,
         required: true
+    },
+
+    documento:{
+        type: String,
+        required: true
     }
 })
 
