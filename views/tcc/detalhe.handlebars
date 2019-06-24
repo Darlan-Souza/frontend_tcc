@@ -34,8 +34,10 @@
             <label for="membros" class=" mt-3">Membros da banca:</label>
             <input type="text" class="form-control col-sm-12" name="membros" value="{{trabalho.membros}}" readonly>
             <br>
-            <button type="submit" class="btn btn-primary btn-lg"
-                style="background: rgba(46, 204, 113,1.0)">Download</button>
+            <a href="/tcc/cadastro/exibeDoc/{{upload.files.filename}}"><button type="submit" class="btn btn-primary btn-lg"
+                style="background: rgba(46, 204, 113,1.0)">
+                        <i class="fas fa-download" style="color: rgb(245, 245, 245);"></i> Download</button></a>
+            
         </form>
     </div>
 </div>
