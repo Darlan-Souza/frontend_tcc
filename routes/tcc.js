@@ -148,7 +148,7 @@ router.get('/cadastro', eAdmin,(req,res)=>{
 
 //cronograma
 router.get('/cronograma',  (req, res)=>{
-  Trabalho.find().sort({date:'asc'}).then((trabalhos)=>{
+  Trabalho.find().sort({data:'asc'}).then((trabalhos)=>{
     res.render("tcc/cronograma",{trabalhos: trabalhos})
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
@@ -301,6 +301,15 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
     })
   })
 
+  //router.get("/cadastro/deletar/:filename",(req,res)=>{
+    //gfs.remove({filename: req.params.documento}).then(()=>{
+      //req.flash("success_msg","Postagem deletada com sucesso!")
+      //res.redirect("/tcc/exibir_todos")
+    //}).catch((err)=>{
+      //req.flash("error_msg","Houve um erro interno!")
+      //res.redirect("/tcc/exibir_todos")
+    //})
+  //})
 
 
 router.get('/index', function (req, res) {

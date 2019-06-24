@@ -1,7 +1,6 @@
 <h3>Detalhe do TCC</h3>
 <div class="card" style="margin-bottom: 10em;">
     <div class="card-body">
-        <form action="/tcc/cadastro/exibe" method="POST">
             <input type="hidden" name="id" value="{{trabalho._id}}">
 
             <label for="titulo" class=" mt-3">Titulo:</label>
@@ -34,8 +33,7 @@
             <label for="membros" class=" mt-3">Membros da banca:</label>
             <input type="text" class="form-control col-sm-12" name="membros" value="{{trabalho.membros}}" readonly>
             <br>
-            <button type="submit" class="btn btn-primary btn-lg"
-                style="background: rgba(46, 204, 113,1.0)">Download</button>
-        </form>
-    </div>
+            <a href="/tcc/cadastro/exibeDoc/{{trabalho.documento}}"><button type="submit" class="btn btn-primary btn-lg"
+                style="background: rgba(46, 204, 113,1.0)">PDF</button>
+    </div></a>
 </div>
