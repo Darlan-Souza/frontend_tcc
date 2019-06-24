@@ -293,6 +293,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
   //deleta tcc
   router.post("/cadastro/deletar", eAdmin, (req, res) => {
     Trabalho.remove({_id: req.body.id}).then(() => {
+      gfs.remove({filename: req.params.documento})
       req.flash("success_msg", "Trabalho deletado com sucesso!")
       res.redirect("/tcc/exibir_todos")
     }).catch((err) => {
@@ -300,17 +301,6 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
       res.redirect("/tcc/exibir_todos")
     })
   })
-
-  //router.get("/cadastro/deletar/:filename",(req,res)=>{
-    //gfs.remove({filename: req.params.documento}).then(()=>{
-      //req.flash("success_msg","Postagem deletada com sucesso!")
-      //res.redirect("/tcc/exibir_todos")
-    //}).catch((err)=>{
-      //req.flash("error_msg","Houve um erro interno!")
-      //res.redirect("/tcc/exibir_todos")
-    //})
-  //})
-
 
 router.get('/index', function (req, res) {
     res.render("tcc/index")
