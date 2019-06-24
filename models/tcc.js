@@ -24,28 +24,36 @@ const Tcc = new Schema({
         required: true
     },
 
+    orientando:{
+        type: String,
+        required: true
+    },
+
     orientador:{
         type: String,
         required: true
     },
 
-    orientando:{
+    horario:{
         type: String,
-        required: true
+        required: false
     },
 
     local:{
         type: String,
         required: true
     },
+
+    data:{
+        type: Date,
+        required: true
+    },
+
     membros:{
         type: String,
         required: true
     },
-    data:{
-        type: Date,
-        required: true
-    }    
+    
 })
 
 mongoose.model("trabalhos",Tcc)

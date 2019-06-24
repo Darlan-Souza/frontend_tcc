@@ -3,6 +3,9 @@ const router = express.Router()
 const mongoose = require("mongoose")
 require("../models/tcc")
 const Trabalho = mongoose.model("trabalhos")
+const {eAdmin} = require("../helpers/eAdmin")
+const {logado} = require("../helpers/logado")
+
 
 
 //Sessão de cadastro de trabalhos
@@ -51,6 +54,22 @@ const storage = new GridFsStorage({
   });
   const upload = multer({ storage });
 
+//download docentes
+router.get("/docentes", function(req, res){
+  res.sendfile("views/tcc/docs/docentes.pdf")
+})
+
+//download resolução consep
+router.get("/doc1", function(req, res){
+  res.sendfile("views/tcc/docs/normas_redação_TCC.pdf")
+})
+
+//download normas de redação
+router.get("/doc2", function(req, res){
+  res.sendfile("views/tcc/docs/resolução_22.pdf")
+})
+
+
 //exibe os documentos
 router.get('/documentacao',  (req,res)=>{
   res.render("tcc/documentacao")
@@ -58,6 +77,8 @@ router.get('/documentacao',  (req,res)=>{
 
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
+
+
 
   Trabalho.find().sort({date:'desc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
@@ -134,14 +155,85 @@ router.get('/cadastro', eAdmin,(req,res)=>{
 
 router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
 
+
+//cronograma
+router.get('/cronograma',  (req, res)=>{
+  Trabalho.find().sort({date:'asc'}).then((trabalhos)=>{
+    res.render("tcc/cronograma",{trabalhos: trabalhos})
+  }).catch((err)=>{
+    req.flash("error_msg","Houve um erro ao listar as categorias")
+    res.redirect("/tcc")
+  })
+})
+
+//detalhes do tcc
+router.get('/index/detalhe',  (req,res)=>{
+  res.render("tcc/detalhe")
+})
+
+//pesquisa com filtro
+router.get('/index',  (req,res)=>{
+  res.render("tcc/index")
+})
+
+router.post('/index/p', (req, res)=>{
+  if(req.body.filtro == "Tema"){
+var pesquisa = req.body.pesquisa;
+Trabalho.find({tema: new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+  res.render("tcc/index", {trabalhos:trabalhos})
+}).catch((err)=>{
+  req.flash("error_msg", "TCC não encontrado")
+  res.redirect("/tcc")
+})
+}
+if(req.body.filtro == "Orientador"){
+  var pesquisa = req.body.pesquisa;
+  Trabalho.find({orientador: new RegExp( pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+    res.render("tcc/index", {trabalhos:trabalhos})
+  }).catch((err)=>{
+    req.flash("error_msg", "TCC não encontrado")
+    res.redirect("/tcc")
+  })
+  }
+  if(req.body.filtro == "Aluno"){
+    var pesquisa = req.body.pesquisa;
+    Trabalho.find({orientando:  new RegExp(pesquisa, 'i')}).sort({date:'desc'}).then((trabalhos)=>{
+      res.render("tcc/index", {trabalhos:trabalhos})
+    }).catch((err)=>{
+      req.flash("error_msg", "TCC não encontrado")
+      res.redirect("/tcc")
+    })
+    }
+  
+    if(req.body.filtro == "Titulo"){
+      var pesquisa = req.body.pesquisa;
+      Trabalho.find({titulo:  new RegExp(pesquisa,'i')}).sort({date:'desc'}).then((trabalhos)=>{
+        res.render("tcc/index", {trabalhos:trabalhos})
+      }).catch((err)=>{
+        req.flash("error_msg", "TCC não encontrado")
+        res.redirect("/tcc")
+      })
+      }
+
+})
+
+
+//cadastro de trabalhos
+router.get('/cadastro', eAdmin, (req,res)=>{
+  res.render("tcc/cadastro")
+})
+
+router.post('/cadastro/novo', eAdmin, (req, res)=>{
+
      
     const novoTrabalho = {
       titulo:req.body.titulo,
       tema:req.body.tema,
       assunto:req.body.assunto,
       resumo:req.body.resumo,
-      orientador:req.body.orientador,
       orientando:req.body.orientando,
+      orientador:req.body.orientador,
+      horario:req.body.horario,
       local:req.body.local,
       membros:req.body.membros,
       data:req.body.data
@@ -159,7 +251,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
   })
 
   //Editar tcc
-  router.get("/cadastro/edit/:id",(req,res)=>{
+  router.get("/cadastro/edit/:id", eAdmin, (req,res)=>{
     Trabalho.findOne({_id:req.params.id}).then((trabalho)=>{
       res.render("tcc/editar",{trabalho: trabalho})
       }).catch((err)=>{
@@ -168,7 +260,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
       })
   })
 
-  router.post("/cadastro/edit",(req,res)=>{
+  router.post("/cadastro/edit", eAdmin, (req,res)=>{
     Trabalho.findOne({_id: req.body.id}).then((trabalho)=>{
       
       trabalho.titulo = req.body.titulo,
@@ -195,8 +287,20 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
     })
 
   })
+ 
 
-  router.post("/cadastro/deletar", (req, res) => {
+  //exibir detalhes
+   router.get("/cadastro/exibe/:id",  (req,res)=>{
+    Trabalho.findOne({_id:req.params.id}).then((trabalho)=>{
+      res.render("tcc/detalhe",{trabalho: trabalho})
+      }).catch((err)=>{
+        req.flash("error_msg","Este trabalho não existe!")
+        res.redirect("/tcc/exibir_todos")
+      })
+  })
+
+  //deleta tcc
+  router.post("/cadastro/deletar", eAdmin, (req, res) => {
     Trabalho.remove({_id: req.body.id}).then(() => {
       req.flash("success_msg", "Trabalho deletado com sucesso!")
       res.redirect("/tcc/exibir_todos")
@@ -206,11 +310,12 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
     })
   })
 
-
+HEAD
 
 router.get('/index', function (req, res) {
     res.render("tcc/index")
 })
+
 
   //Exibe arquivo
   router.get("/cadastro/exibeDoc/:_id",(req,res)=>{
@@ -229,7 +334,7 @@ router.get('/index', function (req, res) {
       }
     })
   })
-})})
+})})})
 
 //Sempre fica por ultimo
 module.exports = router

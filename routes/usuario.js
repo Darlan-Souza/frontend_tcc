@@ -67,8 +67,7 @@ router.get('/registro',(req,res)=>{
                               res.redirect("/usuarios/registro")
                           })
                       })
-                  })
-
+                  }) 
             }
         }).catch((err) => {
             req.flash("error_msg", "Houve um erro interno")
@@ -90,7 +89,7 @@ router.get("/login", function (req, res) {
 
 router.post("/login/aut", (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/usuarios/index",
+        successRedirect: "/tcc/exibir_todos",
         failureRedirect: "/usuarios/login",
         failureFlash: true
     })(req, res, next)
@@ -99,9 +98,53 @@ router.post("/login/aut", (req, res, next) => {
 //usuario fazer logout do sistema 
 router.get("/logout", function(req, res){
     req.logout()
-    req.flash("success_msg", "Deslogado com sucesso")
+    req.flash("success_msg", "Deslogado com sucesso!")
     res.redirect("/")
 })
+
+/*
+//Editar usuário
+router.get("/registro/edit/:id", eAdmin, (req,res)=>{
+    Usuario.findOne({_id:req.params.id}).then((usuario)=>{
+      res.render("usuarios/editar",{usuario:usuario})
+      }).catch((err)=>{
+        req.flash("error_msg","Este usuário não existe!")
+        res.redirect("/usuarios/exibir_todos")
+      })
+  })
+
+  router.post("/registro/edit", eAdmin, (req,res)=>{
+    Usuario.findOne({_id: req.body.id}).then((usuario)=>{
+      
+      usuario.nome = req.body.nome,
+      usuario.email = req.body.email,
+      usuario.senha = req.body.senha,
+
+      usuario.save().then(()=>{
+        req.flash("success_msg","Usuário editado com sucesso!")
+        res.redirect("/usuarios/exibir_todos")
+      }).catch((err)=>{
+        req.flash("error_msg","Houve um erro ao salvar a edição do usuário!")
+        res.redirect("/usuarios/exibir_todos")
+      })
+
+    }).catch((err)=>{
+      req.flash("error_msg","Houve um erro ao editar o usuário")
+      res.redirect("/usuarios/exibir_todos")
+    })
+
+  })
+
+  //deletar usuário
+  router.post("/registro/deletar", eAdmin, (req, res) => {
+    Trabalho.remove({_id: req.body.id}).then(() => {
+      req.flash("success_msg", "Usuário deletado com sucesso!")
+      res.redirect("/usuarios/exibir_todos")
+    }).catch((err) => {
+      req.flash("error_msg", "Houve um erro ao deletar o usuário!")
+      res.redirect("/usuarios/exibir_todos")
+    })
+  })*/
 
 //Sempre fica por ultimo
 module.exports = router 
