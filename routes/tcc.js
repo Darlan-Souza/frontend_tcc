@@ -18,7 +18,6 @@ const method  = require("method-override")
 
 
 Grid.mongo = mongoose.mongo
-const app = express()
 
 
 //Init gfs
@@ -75,11 +74,11 @@ router.get('/documentacao',  (req,res)=>{
 
 //exibe todos os tccs
 router.get('/exibir_todos',  (req, res)=>{
-  Trabalho.find().populate("upload.files").sort({sort:'desc'}).then((trabalhos)=>{
+  Trabalho.find().sort({data:'asc'}).then((trabalhos)=>{
     res.render("tcc/exibir_todos",{trabalhos: trabalhos})
   }).catch((err)=>{
     req.flash("error_msg","Houve um erro ao listar as categorias")
-    res.redirect("/tcc")
+    res.redirect("/tcc"+err)
   })
 })
 

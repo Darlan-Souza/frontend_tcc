@@ -52,8 +52,7 @@ const Tcc = new Schema({
     membros:{
         type: String,
         required: true
-    },
-    
+    }
 })
 
 mongoose.model("trabalhos",Tcc)
