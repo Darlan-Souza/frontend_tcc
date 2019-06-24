@@ -57,8 +57,8 @@
                 <div class="row">
                     <div class="col-md-6 m-auto">
                         <div class="custom-file mb-3">
-                            <input type="file" name="file" id="file" class="custom-file-input">
-                            <label for="file" class="custom-file-label">Enviar PDF</label>
+                            <input type="file" name="file" id="file" class="custom-file-input" onchange="nomeArq()" required>
+                            <label for="file" id="labelFile" class="custom-file-label">Enviar PDF</label>
                         </div>
                     </div>
                 </div>
@@ -69,4 +69,12 @@
                     style="background: rgba(231, 76, 60,1.0)">Cancelar</button></a>
         </form>
     </div>
+    <script>
+        function nomeArq(){
+            var pdf = document.getElementById("file").value
+            var posicao = pdf.lastIndexOf("\\") //Pega somente o nome do arquivo
+            pdf = pdf.substr(posicao+1,pdf.length)
+            document.getElementById("labelFile").innerHTML = pdf
+        }
+    </script>
 </div>
