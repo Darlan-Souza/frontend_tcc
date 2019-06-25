@@ -2,8 +2,19 @@
     #datepicker {
         width: 300px;
     }
-</style>
 
+    .detalhes_req:hover {
+        background: rgba(0, 169, 161, 0.3);
+        cursor: pointer;
+    }
+</style>
+<div class="col m12 s12 detalhes_req">
+    <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+        style="background: #34a5a1; color: white; float: right;">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</div>
+<br>
 <h3>Exibir todos os TCCs</h3>
 <div class="card" style="margin-bottom: 10em;">
     <div class="card-body">
@@ -14,7 +25,7 @@
                     <th scope="col">Aluno</th>
                     <th scope="col">Orientador</th>
                     <th scope="col">Tema</th>
-                   <!-- <th scope="col">Detalhes</th>
+                    <!-- <th scope="col">Detalhes</th>
                     <th scope="col">Download</th>-->
                     <th scope="col">Ação</th>
                 </tr>
@@ -28,17 +39,17 @@
                     <td>{{orientando}}</td>
                     <td>{{orientador}}</td>
                     <td>{{tema}}</td>
-                    
-                    <td align="center">
-                        <a href="/tcc/cadastro/exibe/{{_id}}"><button class="btn btn-primary  px-2 py-1">
-                            <i class="fas fa-plus" style="color: white"></i></button></a>   
 
-                        <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success px-2 py-1" type="submit">
-                            <i class="fas fa-pencil-alt"></i></button></a>
-                        
+                    <td align="center">
+                        <a href="/tcc/cadastro/exibe/{{_id}}"><button class="btn btn-primary px-3 py-1">
+                                <i class="fas fa-plus" style="color: white"></i></button></a>
+                        <br>
+                        <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success px-3 py-1" type="submit">
+                                <i class="fas fa-pencil-alt"></i></button></a>
+                        <br>
                         <form action="/tcc/cadastro/deletar" method="POST">
                             <input type="hidden" name="id" value="{{_id}}">
-                            <button class="btn btn-danger px-2 py-1" type="submit">
+                            <button class="btn btn-danger px-3 py-1 mr-1" type="submit">
                                 <i class="fa fa-trash"></i></button>
                         </form>
                     </td>
