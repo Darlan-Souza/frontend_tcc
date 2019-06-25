@@ -40,14 +40,14 @@
 <h5 style="text-align: center;">Resultado</h5>
 <div class="card" style="margin-bottom: 10em;">
   <div class="card-body">
-    <table class="table">
+    <table class="table table-responsive">
       <thead class="thead-dark" align="center">
         <tr>
           <th scope="col">Titulo</th>
           <th scope="col">Aluno</th>
           <th scope="col">Orientador</th>
           <th scope="col">Tema</th>
-          <th scope="col">Ação</th>
+          <th scope="col" style="width: 100px !important;">Ação</th>
 
         </tr>
       </thead>
@@ -60,7 +60,7 @@
           <td align="center">{{orientando}}</td>
           <td align="center">{{orientador}}</td>
           <td align="center">{{tema}}</td>
-          <td align="center">
+          <td align="center" style="width: 150px !important;" >
             <a href="/tcc/cadastro/exibe/{{_id}}"><button class="btn btn-primary px-3 py-1">
               <i class="fas fa-plus" style="color: white"></i></button></a>
             <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success px-3 py-1" type="submit">
