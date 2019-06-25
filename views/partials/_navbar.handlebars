@@ -17,6 +17,7 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
 
+            {{#if user}}
             <div class="dropdown">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Gerenciar TCC</button>
                 <div class="dropdown-menu">
@@ -25,7 +26,8 @@
                     <a class="dropdown-item" href="/tcc/index">Pesquisar TCC</a>
                 </div>
             </div>
- 
+            {{/if}}
+
             <li class="nav-item active">
                 <a class="nav-link" href="/tcc/documentacao">Documentação</a>
             </li>
@@ -35,12 +37,12 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
-        {{#if user}}
+            {{#if user}}
             <a class="nav-link" href="/usuarios/logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
-        {{else}}
+            {{else}}
             <a class="nav-link" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
-        {{/if}}
-            
+            {{/if}}
+
         </form>
 
     </div>
