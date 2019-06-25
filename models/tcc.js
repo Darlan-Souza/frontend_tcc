@@ -45,7 +45,7 @@ const Tcc = new Schema({
     },
 
     data:{
-        type: Date,
+        type: {$dateToString: {format: "%G-%m-%d",date: "$datetime"}},
         required: true
     },
 
