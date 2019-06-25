@@ -11,6 +11,57 @@
     </a>
 </div>
 <br>
+<div class="row mt-5 mb-3">
+    <div class="col-sm-12">
+
+        <script>
+            $(document).ready(function () {
+
+                var monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julio", "Agosto", "Setembro", "Octubro", "Novembro", "Dicembro"];
+
+                var dayNames = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
+
+                var events = [
+                    {
+                        date: "27/6/2019",
+                        title: 'SPORT & WELLNESS',
+                        link: 'http://bic.cat',
+                        linkTarget: '_blank',
+                        color: '',
+                        content: '<img src="http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori',
+                        class: '',
+                        displayMonthController: true,
+                        displayYearController: true,
+                        nMonths: 6
+                    }
+                ];
+
+                $('#calendari_lateral1').bic_calendar({
+                    //list of events in array
+                    events: events,
+                    //enable select
+                    enableSelect: true,
+                    //enable multi-select
+                    multiSelect: true,
+                    //set day names
+                    dayNames: dayNames,
+                    //set month names
+                    monthNames: monthNames,
+                    //show dayNames
+                    showDays: true,
+                    //show month controller
+                    displayMonthController: true,
+                    //show year controller
+                    displayYearController: true,
+                });
+            });
+        </script>
+        <div id="calendari_lateral1"></div>
+    </div>
+
+</div>
+
+<br>
 <h3>Apresentações marcadas</h3>
 <table class="table">
     <thead class="thead-dark">
