@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href='/img/logo.png' />
 
     <link rel="stylesheet" href="/css/bootstrap.css">
-
+    <link rel="stylesheet" href="/css/app.css">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 
     <link href="/css/bic_calendar.css" rel="stylesheet">
@@ -23,11 +23,11 @@
     <title>Sistema TCC</title>
 </head>
 
-<body stayle="height:100%;">
+<body >
     <!--Carregando a parte de navbar, o sinal de > faz com que o handlebars saiba que quero pegar um arquivo dentro da pasta partials-->
-    <div class="container-fluid">
+    
         {{>_navbar}}
-        <div class="container mt-4">
+        <div class="container mt-5">
             <!--Msg de sucesso ou erro no registro de categoria (coloco dentro do container pra ficar mais bonito)-->
             {{#if error}}
             <div class="alert alert-danger">{{error}}</div>
@@ -38,7 +38,7 @@
             {{{body}}}
         </div>
         {{>_footer}}
-    </div>
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
