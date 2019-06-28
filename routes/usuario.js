@@ -101,12 +101,14 @@ router.get("/logout", function(req, res){
     req.flash("success_msg", "Deslogado com sucesso!")
     res.redirect("/")
 })
-
+router.get("/registro/edituser", function(req,res){
+    res.render("usuarios/editaruser")
+})
 /*
 //Editar usuário
 router.get("/registro/edit/:id", eAdmin, (req,res)=>{
     Usuario.findOne({_id:req.params.id}).then((usuario)=>{
-      res.render("usuarios/editar",{usuario:usuario})
+      res.render("usuarios/editaruser",{usuario:usuario})
       }).catch((err)=>{
         req.flash("error_msg","Este usuário não existe!")
         res.redirect("/usuarios/exibir_todos")
@@ -144,7 +146,7 @@ router.get("/registro/edit/:id", eAdmin, (req,res)=>{
       req.flash("error_msg", "Houve um erro ao deletar o usuário!")
       res.redirect("/usuarios/exibir_todos")
     })
-  })*/
-
+  })
+*/
 //Sempre fica por ultimo
 module.exports = router 

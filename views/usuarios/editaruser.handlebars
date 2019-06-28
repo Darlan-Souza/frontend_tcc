@@ -1,0 +1,50 @@
+{{#each erros}}
+
+<div class="alert alert-danger">{{texto}}</div>
+
+{{else}}
+
+{{/each}}
+<style>
+    .detalhes_req:hover {
+        background: rgba(0, 169, 161, 0.3);
+        cursor: pointer;
+    }
+</style>
+<div class="col m12 s12 detalhes_req">
+    <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+        style="background: #34a5a1; color: white; float: right;">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</div>
+<br>
+<h3>Edite sua conta</h3>
+<div class="card" style="margin-bottom: 10em;">
+    <div class="card-body">
+        <form action="#" method="POST">
+            <input type="hidden" name="id" value="">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome: </label>
+                    <input type="text" name="nome" class="form-control col-12" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail: </label>
+                    <input type="email" name="email" class="form-control col-12" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="senha">Senha: </label>
+                    <input type="password" name="senha" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="senha2">Repita a sua senha: </label>
+                    <input type="password" name="senha2" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Alterar conta</button>
+        </form>
+    </div>
+</div>

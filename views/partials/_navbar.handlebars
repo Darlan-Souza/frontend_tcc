@@ -36,11 +36,17 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline mr-5 my-lg-0">
             {{#if user}}
-            <a class="nav-link" href="/usuarios/logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+            <div class="dropdown mr-5">
+                <a href="#" class="btn dropdown mt-2" data-toggle="dropdown"><i class="fas fa-user fa-2x"></i></a>
+                <div class="dropdown-menu mr-5">
+                    <a class="dropdown-item" href="/usuarios/registro/edituser">Alterar cadatro</a>
+                    <a class="dropdown-item" href="/usuarios/logout">Sair</a>
+                </div>
+            </div>
             {{else}}
-            <a class="nav-link" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
+            <a class="btn mr-5" href="/usuarios/login"><i class="fas fa-user fa-2x"></i></a>
             {{/if}}
 
         </form>
