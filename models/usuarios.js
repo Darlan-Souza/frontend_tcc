@@ -25,3 +25,9 @@ const Usuario = new Schema({
 })
 
 mongoose.model("usuarios",Usuario)
+
+//Função para criar um administrador
+//db.usuarios.insert({"nome": "Gilberto","email": "gilberto@gmail.com", "eAdmin": 1, "senha":12345678}) 
+
+//Modificar eAdmin
+//db.usuarios.update({'nome':'Gilberto'},{$set:{'eAdmin':1}})
