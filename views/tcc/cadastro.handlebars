@@ -5,7 +5,8 @@
     }
 </style>
 <div class="col m12 s12 detalhes_req">
-    <a class="waves-effect waves-light btn"  onclick="history.go(-1);" style="background: #34a5a1; color: white; float: right;">
+    <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+        style="background: #34a5a1; color: white; float: right;">
         <i class="fas fa-arrow-left"></i> Voltar
     </a>
 </div>
@@ -14,53 +15,53 @@
 <div class="card" style="margin-bottom: 10em;">
     <div class="card-body">
         <form action="/tcc/cadastro/novo" method="POST" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-6">
+            <div class="form-row">
+                <div class="form-group col-md-6">
                     <label for="titulo" class=" mt-3">Titulo:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Titulo" name="titulo" required>
                 </div>
-                <div class="col-3">
+                <div class="form-group col-md-3">
                     <label for="tema" class=" mt-3">Tema:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Tema" name="tema" required>
                 </div>
-                <div class="col-3">
+                <div class="form-group col-md-3">
                     <label for="assunto" class=" mt-3">Assunto:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Assunto" name="assunto" required>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1" class=" mt-3">Resumo:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="resumo"
                         required></textarea>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
+            <div class="form-row">
+                <div class="form-group col-md-4">
                     <label for="orientando" class=" mt-3">Aluno:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Orientando" name="orientando"
                         required>
                 </div>
-                <div class="col-4">
+                <div class="form-group col-md-4">
                     <label for="orientador" class=" mt-3">Orientador:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Orientador" name="orientador"
                         required>
                 </div>
-                <div class="col-4">
+                <div class="form-group col-md-4">
                     <label for="membros" class=" mt-3">Membros da banca:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Membros" name="membros" required>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
+            <div class="form-row">
+                <div class="form-group col-md-4">
                     <label for="horario" class=" mt-3">Horário:</label>
                     <input type="time" class="form-control col-sm-12" name="horario" required>
                 </div>
-                <div class="col-4">
+                <div class="form-group col-md-4">
                     <label for="local" class=" mt-3">Local:</label>
                     <input type="text" class="form-control col-sm-12" placeholder="Local" name="local" required>
                 </div>
-                <div class="col-4">
+                <div class="form-group col-md-4">
                     <label for="data" class=" mt-3">Data da defesa:</label>
                     <input type="date" class="form-control col-sm-12" placeholder="Data" name="data" required>
                 </div>
