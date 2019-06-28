@@ -116,7 +116,7 @@ $.fn.bic_calendar = function(options) {
         function showCalendar() {
 
             //layer with the days of the month (literals)
-            daysMonthLayer = $('<table class="table">');
+            daysMonthLayer = $('<table class="table table-responsive-sm">');
 
             listListeralsWeek();
 

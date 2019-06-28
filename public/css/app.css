@@ -5,7 +5,9 @@ nav.navbar {
 footer.main-footer {
     /* Deixar o footer sempre em baixo */
     background-color: #e3f2fd; 
-    position:absolute;
+    
+    margin-top: 23em;
+    position: relative;
     width:100%; 
     bottom:0;
 }
