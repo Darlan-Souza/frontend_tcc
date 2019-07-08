@@ -169,11 +169,11 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
     new Trabalho(novoTrabalho).save().then(()=>{
       //Passando a mensagem para a variavel global
       req.flash("success_msg","Categoria criada com sucesso!")
-      res.redirect("/tcc/exibir_todos")
+      res.redirect("/tcc/index")
     }).catch((err)=>{
       //Passando a mensagem para a variavel global
       req.flash("error_msg","Houve um erro ao salvar a categoria, tente novamente!"+err)
-      res.redirect("/tcc/exibir_todos")
+      res.redirect("/tcc/index")
     })
   })
 
@@ -183,7 +183,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
       res.render("tcc/editar",{trabalho: trabalho})
       }).catch((err)=>{
         req.flash("error_msg","Este trabalho não existe!")
-        res.redirect("/tcc/exibir_todos")
+        res.redirect("/tcc/index")
       })
   })
 
@@ -202,15 +202,15 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
 
       trabalho.save().then(()=>{
         req.flash("success_msg","Trabalho editado com sucesso!")
-        res.redirect("/tcc/exibir_todos")
+        res.redirect("/tcc/index")
       }).catch((err)=>{
         req.flash("error_msg","Houve um erro ao salvar a edição do trabalho!")
-        res.redirect("/tcc/exibir_todos")
+        res.redirect("/tcc/index")
       })
 
     }).catch((err)=>{
       req.flash("error_msg","Houve um erro ao editar o trabalho")
-      res.redirect("/tcc/exibir_todos")
+      res.redirect("/tcc/index")
     })
 
   })
@@ -222,7 +222,7 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
       res.render("tcc/detalhe",{trabalho: trabalho})
       }).catch((err)=>{
         req.flash("error_msg","Este trabalho não existe!")
-        res.redirect("/tcc/exibir_todos")
+        res.redirect("/tcc/index")
       })
   })
 
@@ -231,10 +231,10 @@ router.post('/cadastro/novo', eAdmin, upload.single('file'), (req, res)=>{
     Trabalho.remove({_id: req.body.id}).then(() => {
       gfs.remove({filename: req.body.documento, root: "upload"})
       req.flash("success_msg", "Trabalho deletado com sucesso!")
-      res.redirect("/tcc/exibir_todos")
+      res.redirect("/tcc/index")
     }).catch((err) => {
       req.flash("error_msg", "Houve um erro ao deletar o trabalho!")
-      res.redirect("/tcc/exibir_todos")
+      res.redirect("/tcc/index")
     })
   })
 

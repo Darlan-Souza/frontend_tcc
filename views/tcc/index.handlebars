@@ -1,22 +1,22 @@
 <style>
-    .detalhes_req:hover {
-        background: rgba(0, 169, 161, 0.3);
-        cursor: pointer;
-    }
+  .detalhes_req:hover {
+    background: rgba(0, 169, 161, 0.3);
+    cursor: pointer;
+  }
 </style>
 <div class="col m12 s12 detalhes_req">
-    <a class="waves-effect waves-light btn" href="/tcc/exibir_todos"
-        style="background: #34a5a1; color: white; float: right;">
-        <i class="fas fa-arrow-left"></i> Voltar
-    </a>
+  <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+    style="background: #34a5a1; color: white; float: right;">
+    <i class="fas fa-arrow-left"></i> Voltar
+  </a>
 </div>
 <br>
 <br>
 <div class="card">
   <h3 style="text-align: center;">Pesquisa de TCCs</h3>
-  
+
   <div class="card-body">
-    <form action="/tcc/index/p" method="POST" class="form-inline">
+    <form action="/tcc/index/p" method="POST" class="form-inline" style="margin-left: 5%;">
       <input class="form-control mr-2 col-sm-7" type="search" placeholder="Pesquisar" name="pesquisa"
         aria-label="Search">
       <select class="form-control mr-sm-2 col-sm-2" name="filtro">
@@ -37,7 +37,7 @@
 </style>
 
 <br>
-<h5 style="text-align: center;">Resultado</h5>
+<h5 id="resultado" style="text-align: center;">Resultado</h5>
 <div class="card" style="margin-bottom: 10em;">
   <div class="card-body">
     <table class="table table-responsive-md">
@@ -47,7 +47,10 @@
           <th scope="col">Aluno</th>
           <th scope="col">Orientador</th>
           <th scope="col">Tema</th>
-          <th scope="col" style="width: 100px !important;">Ação</th>
+          <th scope="col" style="width: 50px !important;">Info</th>
+          <th scope="col" style="width: 50px !important;">Editar</th>
+          <th scope="col" style="width: 50px !important;">Excluir</th>
+          <!-- <th scope="col" style="width: 200px !important;">Ação</th>-->
 
         </tr>
       </thead>
@@ -60,18 +63,21 @@
           <td align="center">{{orientando}}</td>
           <td align="center">{{orientador}}</td>
           <td align="center">{{tema}}</td>
-          <td align="center" style="width: 150px !important;" >
+          <td align="center">
+            <!-- <form action="/tcc/cadastro/deletar" method="POST"> -->
             <a href="/tcc/cadastro/exibe/{{_id}}"><button class="btn btn-primary px-3 py-1">
-              <i class="fas fa-plus" style="color: white"></i></button></a>
+                <i class="fas fa-plus" style="color: white"></i></button></a>
+          </td>
+          <td>
             <a href="/tcc/cadastro/edit/{{_id}}"><button class="btn btn-success px-3 py-1" type="submit">
-              <i class="fas fa-pencil-alt"></i></button></a>
-                        <!--<form action="/tcc/cadastro/deletar" method="POST">
-                            <input type="hidden" name="id" value="{{_id}}">
-                            <button class="btn btn-danger px-3 py-1 mr-1" type="submit">
-                                <i class="fa fa-trash"></i></button>
-                        </form>-->
-                    </td>
-         <!-- <td align="center"><a href="/tcc/cadastro/exibe/{{_id}}"><i class="fas fa-question-circle"
+                <i class="fas fa-pencil-alt"></i></button></a>
+          </td>
+          <td>
+            <a href="/tcc/cadastro/deletar/{{_id}}"><button class="btn btn-danger px-3 py-1 mr-1" type="submit">
+                <i class="fa fa-trash"></i></button></a>
+            <!--   </form>-->
+          </td>
+          <!-- <td align="center"><a href="/tcc/cadastro/exibe/{{_id}}"><i class="fas fa-question-circle"
                 style="color: rgba(41, 128, 185,1.0);"></i></a></td>
           <td align="center"><a href="/tcc/cadastro/exibeDoc/{{documento}}"><i class="fas fa-download" style="color: rgba(192, 57, 43,1.0);"></i></a></td>
 
@@ -90,7 +96,10 @@
         </tr>
 
         {{else}}
-
+          <script>
+            document.getElementById("resultado").style = "color: red; text-align: center;";
+            document.getElementById("resultado").innerHTML = "Registros inexistentes";  
+          </script>
         {{/each}}
       </tbody>
     </table>
