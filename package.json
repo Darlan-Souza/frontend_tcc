@@ -20,7 +20,7 @@
     "express-middleware": "^3.4.1",
     "express-middlewares": "^0.1.1",
     "express-session": "^1.16.2",
-    "mongoose": "^5.6.0",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
